@@ -28,6 +28,10 @@ stages:
         pool:
           vmImage: ubuntu-18.04
         steps:
+            - task: Docker@2
+              inputs:
+                containerRegistry: 'docker'
+                command: 'login'
           - script: |
               docker login
               docker image build -f dockerfile -t fredbelotte/p1proj .
